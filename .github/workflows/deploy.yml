@@ -1,4 +1,4 @@
-name: Production Django deploy IdealDentBot
+name: Production Django deploy BB bot
 
 on:
   push:
