@@ -22,7 +22,7 @@ jobs:
         KEY: ${{ secrets.REGRU_SSH_PRIVATE_KEY }}
       with:
         source: "."
-        target: "/UTKIRBEK-2022/MadeinUzb/MadeinUzb"
+        target: "/UTKIRBEK-2022/bb"
 
     - name: Command using from script
       uses: appleboy/ssh-action@master
