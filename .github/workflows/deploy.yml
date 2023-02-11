@@ -34,5 +34,5 @@ jobs:
         script_stop: true
         script: |
           /UTKIRBEK-2022/bb/env/bin/pip install -r /UTKIRBEK-2022/bb/requirements.txt
-          pm2 reload bb
+          /www/server/nvm/versions/node/v16.13.0/bin/pm2 reload bb
           sh /root/devops/bb.sh "${{ github.event.head_commit.message }}"
