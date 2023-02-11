@@ -1,0 +1,38 @@
+name: Production Django deploy IdealDentBot
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: GIT pulling from github repository
+      uses: appleboy/scp-action@master
+      env:
+        HOST: ${{ secrets.REGRU_HOST }}
+        USERNAME: ${{ secrets.REGRU_USERNAME }}
+        PORT: ${{ secrets.REGRU_PORT }}
+        KEY: ${{ secrets.REGRU_SSH_PRIVATE_KEY }}
+      with:
+        source: "."
+        target: "/UTKIRBEK-2022/MadeinUzb/MadeinUzb"
+
+    - name: Command using from script
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.REGRU_HOST }}
+        USERNAME: ${{ secrets.REGRU_USERNAME }}
+        PORT: ${{ secrets.REGRU_PORT }}
+        KEY: ${{ secrets.REGRU_SSH_PRIVATE_KEY }}
+        script_stop: true
+        script: |
+          /UTKIRBEK-2022/bb/env/bin/pip install -r /UTKIRBEK-2022/bb/requirements.txt
+          pm2 reload bb
+          sh /root/devops/bb.sh "${{ github.event.head_commit.message }}"
