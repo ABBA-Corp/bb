@@ -1,7 +1,8 @@
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
+import config
 
-API_TOKEN = '5151526365:AAEvgNp7MLewmjsgRzVLlTwmITday-qymEQ'
-bot = Bot(token=API_TOKEN)
+
+bot = Bot(token=config.BOT_TOKEN)
 dp = Dispatcher(bot, storage=MemoryStorage())
-admins = [935567645]
+admins = config.ADMIN

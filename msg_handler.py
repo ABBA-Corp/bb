@@ -367,7 +367,7 @@ async def get_by_id(call: CallbackQuery, state: FSMContext):
                 if disl:
                     text += f'📍 <b>Дислокация</b>: {disl}\n'
                 if ros:
-                    text += f'↔️ <b>Расстояние</b>: {ros}'
+                    text += f'↔️ <b>Расстояние</b>: {ros}\n'
                 if prib:
                     text += f'📅 <b>Дата прибытие</b>: {prib}\n'
                 if yon:
